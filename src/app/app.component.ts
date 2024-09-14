@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created app.component.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
+
 import {Component, OnInit}            from '@angular/core';
 import {Event, NavigationEnd, Router} from "@angular/router";
 import {ThemePickerService}           from "./services/theme-picker.service";
@@ -30,7 +36,7 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private themePickerService: ThemePickerService) {
     if (!localStorage.getItem('rapd_jwt')) {
-      localStorage.setItem('rapd_jwt', '');
+      console.log('token is not available');
     }
   }
 

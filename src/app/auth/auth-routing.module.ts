@@ -2,17 +2,14 @@ import {NgModule}             from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {LoginComponent}       from "./login/login.component";
 import {SignupComponent}      from "./signup/signup.component";
+import {canLoadGuard}         from "../guards/can-load.guard";
 
 
 const routes: Routes = [
   {
-    path      : '',
-    redirectTo: 'signup',
-    pathMatch : 'full'
-  },
-  {
-    path     : 'login',
-    component: LoginComponent
+    path       : 'login',
+    component  : LoginComponent,
+    canActivate: [canLoadGuard],
   },
   {
     path     : 'signup',

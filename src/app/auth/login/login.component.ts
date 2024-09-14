@@ -23,15 +23,17 @@ export class LoginComponent {
 
   onLogin() {
     const loginData: LoginRequest = {username: this.username, password: this.password};
-    localStorage.removeItem('rapd_jwt');
     this.authService.login(loginData).subscribe(
       {
         next    : (response: AppResponse) => {
           console.log(response);
           if (response && response.httpResponseCode === 200 && response.data) {
             const user: Users = response.data;
-            localStorage.setItem('rapd_jwt', response.jwt);
-            this.authService.decodeJwt();
+            console.log('response', response);
+            localStorage.setItem('rapd_jwt', JSON.stringify(response.jwt));
+            setTimeout(() => {
+              this.authService.decodeJwt();
+            }, 200);
             this.messageService.add(
               {
                 key     : 'login-toast',
@@ -60,8 +62,8 @@ export class LoginComponent {
             {
               key     : 'login-toast',
               severity: 'error',
-              summary : `${error.name} (${error.status})`,
-              detail  : error.statusText,
+              summary : `${error.error.title} (${error.error.status})`,
+              detail  : error.error.detail,
               life    : 5000
             }
           );

@@ -12,7 +12,9 @@ import {FormsModule, ReactiveFormsModule}       from "@angular/forms";
 import {MenubarModule}                          from "primeng/menubar";
 import {AuthModule}                             from "./auth/auth.module";
 import {HttpClientModule}                       from "@angular/common/http";
-import { HomeComponent } from './home/home.component';
+import {HomeComponent}                          from './home/home.component';
+import {ToastModule}                            from "primeng/toast";
+import {MessageService}                         from "primeng/api";
 
 @NgModule(
   {
@@ -31,9 +33,11 @@ import { HomeComponent } from './home/home.component';
       DropdownModule,
       ButtonModule,
       FormsModule,
-      MenubarModule
+      MenubarModule,
+      ToastModule
     ],
     providers   : [
+      MessageService,
       {
         provide : LocationStrategy,
         useClass: HashLocationStrategy
