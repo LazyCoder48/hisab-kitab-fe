@@ -34,7 +34,7 @@ export class LoginComponent {
           console.log(response);
           if (response && response.httpResponseCode === 200 && response.data) {
             const user: Users = response.data;
-            console.log('response', response);
+            console.log('response', response, 'user', user);
             if (response.jwt) {
               localStorage.setItem('rapd_jwt', JSON.stringify(response.jwt));
             }
