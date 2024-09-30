@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created login.component.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {Component}      from '@angular/core';
 import {AuthService}    from "../../services/auth/auth.service";
 import {LoginRequest}   from "../../interfaces/auth/login-request";
@@ -30,7 +35,9 @@ export class LoginComponent {
           if (response && response.httpResponseCode === 200 && response.data) {
             const user: Users = response.data;
             console.log('response', response);
-            localStorage.setItem('rapd_jwt', JSON.stringify(response.jwt));
+            if (response.jwt) {
+              localStorage.setItem('rapd_jwt', JSON.stringify(response.jwt));
+            }
             setTimeout(() => {
               this.authService.decodeJwt();
             }, 200);

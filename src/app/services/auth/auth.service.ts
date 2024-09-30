@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created auth.service.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {Injectable}   from '@angular/core';
 import {HttpClient}   from "@angular/common/http";
 import {environment}  from "../../../environments/environment";
@@ -27,7 +32,6 @@ export class AuthService {
 
   }
 
-
   login(data: LoginRequest) {
     let url                    = `${environment.API_URL}/auth/login`;
     let appRequest: AppRequest = {
@@ -37,10 +41,26 @@ export class AuthService {
     return this.http.post<AppResponse>(url, appRequest);
   }
 
-  decodeJwt() {
-    const jwt: string | null = localStorage.getItem('rapd_jwt');
-    const payload            = jwtDecode(jwt || '');
+  decodeJwt(): any {
+    const jwt: string | null = JSON.parse(localStorage.getItem('rapd_jwt') || '{}');
+    console.log(jwt);
+    const payload = jwtDecode(jwt || '');
     console.log(payload);
+    return payload;
+  }
+
+  validateJwt(): boolean {
+    const jwt = this.decodeJwt();
+    const now = new Date();
+    console.log('token expires at', new Date(jwt.expiration));
+    if (jwt && now.getTime() < jwt.expiration) {
+      this.isLoggedIn = true;
+      this.username   = jwt.username;
+    } else {
+      this.isLoggedIn = false;
+      this.username   = '';
+    }
+    return this.isLoggedIn;
   }
 
 }

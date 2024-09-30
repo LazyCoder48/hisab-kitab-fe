@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created common.service.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {Injectable}     from '@angular/core';
 import {MessageService} from "primeng/api";
 

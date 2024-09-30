@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created can-load.guard.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {CanActivateFn} from '@angular/router';
 import {inject}        from "@angular/core";
 import {CommonService} from "../services/common.service";
@@ -9,18 +14,22 @@ export const canLoadGuard: CanActivateFn = (route, state) => {
   if (state.url.endsWith("login")) {
     console.log(state.url);
     if (localStorage.getItem('rapd_jwt')) {
-      // authService.validateJwt
 
-
-      commonService.showToast(
-        {
-          key     : 'app-toast',
-          severity: 'warning',
-          summary : `You are already logged in!`
-        }
-      );
-      return false;
+      if (authService.validateJwt()) {
+        commonService.showToast(
+          {
+            key     : 'app-toast',
+            severity: 'warning',
+            summary : `You are already logged in!`
+          }
+        );
+        return false;
+      } else {
+        localStorage.removeItem('rapd_jwt');
+        return true;
+      }
     }
+
   }
   return true;
 };

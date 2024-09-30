@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created app.module.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
