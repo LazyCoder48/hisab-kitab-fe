@@ -6,6 +6,7 @@
 import {CanActivateFn} from '@angular/router';
 
 export const authFnGuard: CanActivateFn = (route, state) => {
+  console.log(route, state);
   alert('authFnGuard');
   return true;
 };

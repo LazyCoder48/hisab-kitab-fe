@@ -6,5 +6,6 @@
 import {CanActivateFn} from '@angular/router';
 
 export const authValidationGuard: CanActivateFn = (route, state) => {
+  console.log(route, state);
   return true;
 };

@@ -50,6 +50,7 @@ export class LoginComponent {
                 life    : 3000
               }
             );
+            this.router.navigate(['/dashboard']).then(r => console.log('navigated to /dashboard', r));
           } else {
             console.error('no proper response from backend');
             this.messageService.add(
