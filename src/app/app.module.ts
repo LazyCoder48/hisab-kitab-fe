@@ -20,6 +20,7 @@ import {HttpClientModule}                       from "@angular/common/http";
 import {HomeComponent}                          from './home/home.component';
 import {ToastModule}                            from "primeng/toast";
 import {MessageService}                         from "primeng/api";
+import {AuthService}                            from './services/auth/auth.service';
 
 @NgModule(
   {
@@ -42,6 +43,7 @@ import {MessageService}                         from "primeng/api";
       ToastModule
     ],
     providers   : [
+      AuthService,
       MessageService,
       {
         provide : LocationStrategy,

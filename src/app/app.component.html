@@ -11,15 +11,21 @@
       </div>
       <div class="align-items-end align-content-center">
         <!--        <p-button [link]="true" [routerLink]="'auth/login'" label="LoginRequest" />-->
-        <a *ngIf="!onLoginPage && !isLoggedIn" class="p-button mr-2" routerLink="auth/login">Login</a>
-        <a *ngIf="!onSignupPage && !isLoggedIn" class="p-button" routerLink="auth/signup">Sign Up</a>
+        {{isLoggedIn}}
+        @if (!isLoggedIn) {
+          <a *ngIf="!onLoginPage" class="p-button mr-2" routerLink="auth/login">Login</a>
+          <a *ngIf="!onSignupPage" class="p-button" routerLink="auth/signup">Sign Up</a>
+        } @else {
+          <a class="p-button mr-2" (click)="logout()">Logout</a>
+        }
+
       </div>
     </div>
   </div>
 </header>
 <div class="app-view-area">
   <main *ngIf="!onLoginOrSignup && !isLoggedIn" class="mx-5 mt-4">
-    <h2>हिसाब किताब, तेजी से, आसानी से</h2>
+    <h2>हिसाब किताब -> तेजी से, आसानी से</h2>
     <p>Effortlessly manage your expenses and make informed financial decisions.</p>
   </main>
   <router-outlet></router-outlet>
