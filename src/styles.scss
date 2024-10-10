@@ -1,3 +1,9 @@
+/*!
+ * Copyright (c) 2024.
+ * ajite created styles.scss
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
+
 //// Custom Theming for Angular Material
 //// For more information: https://material.angular.io/guide/theming
 //@use '@angular/material' as mat;
@@ -36,11 +42,53 @@
 
 /* You can add global styles to this file, and also import other style files */
 
+@font-face{
+  font-family : 'firacodeRegular';
+  src         : url('assets/fonts/FiraCode-Regular.ttf') format('truetype');
+  font-weight : 400;
+  font-style  : normal;
+}
+
+@font-face{
+  font-family : 'firacodeSemiBold';
+  src         : url('assets/fonts/FiraCode-SemiBold.ttf') format('truetype');
+  font-weight : 700;
+  font-style  : normal;
+}
+
+@font-face{
+  font-family : 'firacodeRetina';
+  src         : url('assets/fonts/FiraCode-Retina.ttf') format('truetype');
+  font-weight : 400;
+  font-style  : italic;
+}
+
+@font-face{
+  font-family : 'firacodeLight';
+  src         : url('assets/fonts/FiraCode-Light.ttf') format('truetype');
+  font-weight : 300;
+  font-style  : normal;
+}
+
+@font-face{
+  font-family : 'firacodeMedium';
+  src         : url('assets/fonts/FiraCode-Medium.ttf') format('truetype');
+  font-weight : 500;
+  font-style  : normal;
+}
+
+@font-face{
+  font-family : 'firacodeBold';
+  src         : url('assets/fonts/FiraCode-Bold.ttf') format('truetype');
+  font-weight : 900;
+  font-style  : normal;
+}
+
+
 html, body{
   height : 100%;
 }
 
 body{
-  font-family : Roboto, 'Helvetica Neue', sans-serif;
-  margin      : 0;
+  font-family : firacodeRetina, cursive;
 }
