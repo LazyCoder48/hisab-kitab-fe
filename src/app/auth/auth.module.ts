@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created auth.module.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {NgModule}                         from '@angular/core';
 import {CommonModule}                     from '@angular/common';
 import {LoginComponent}                   from './login/login.component';
@@ -14,8 +19,6 @@ import {MessageService}                   from "primeng/api";
 import {HTTP_INTERCEPTORS}                from "@angular/common/http";
 import {JwtInterceptor}                   from "../interceptor/jwt/jwt.interceptor";
 import {ActivatorComponent}               from '../activator/activator.component';
-import {AuthService}                      from "../services/auth/auth.service";
-
 
 @NgModule(
   {
@@ -37,7 +40,6 @@ import {AuthService}                      from "../services/auth/auth.service";
       ToastModule
     ],
     providers   : [
-      AuthService,
       MessageService,
       {
         provide : HTTP_INTERCEPTORS,

@@ -1,11 +1,14 @@
+/*
+ * Copyright (c) 2024.
+ * ajite created theme-picker.service.ts
+ * Project: hisab-kitab-fe | Module: hisab-kitab-fe
+ */
 import {Injectable} from '@angular/core';
 
 @Injectable({
               providedIn: 'root'
             })
 export class ThemePickerService {
-
-  // constructor(@Inject(DOCUMENT) private document: Document) {}
 
   themeLinkElement: HTMLLinkElement;
 
@@ -18,13 +21,5 @@ export class ThemePickerService {
   switchTheme(themeName: string): void {
     this.themeLinkElement.href = `assets/themes/${themeName}/theme.css`;
   }
-
-  // switchTheme(theme: string) {
-  //   let themeLink = this.document.getElementById('app-theme') as HTMLLinkElement;
-  //
-  //   if (themeLink) {
-  //     themeLink.href = 'assets/themes/theme-' + theme + '.scss';
-  //   }
-  // }
 
 }

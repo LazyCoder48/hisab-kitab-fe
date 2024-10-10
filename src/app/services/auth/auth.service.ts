@@ -17,8 +17,10 @@ import {jwtDecode}    from "jwt-decode";
             })
 export class AuthService {
 
-  isLoggedIn: boolean = false;
-  username: string    = '';
+  public isLoggedIn: boolean = false;
+  public username: string    = '';
+  public userData: any;
+  public jwt: string         = '';
 
   constructor(private http: HttpClient) { }
 
@@ -42,9 +44,8 @@ export class AuthService {
   }
 
   decodeJwt(): any {
-    const jwt: string | null = JSON.parse(localStorage.getItem('rapd_jwt') || '{}');
-    console.log(jwt);
-    const payload = jwtDecode(jwt || '');
+    console.log(this.jwt);
+    const payload = jwtDecode(this.jwt);
     console.log(payload);
     return payload;
   }
@@ -61,6 +62,11 @@ export class AuthService {
       this.username   = '';
     }
     return this.isLoggedIn;
+  }
+
+  logout(appRequest: AppRequest) {
+    let url = `${environment.API_URL}/auth/logout`;
+    return this.http.put<AppResponse>(url, appRequest)
   }
 
 }

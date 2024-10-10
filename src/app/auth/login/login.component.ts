@@ -26,7 +26,7 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private messageService: MessageService, private router: Router) {}
 
-  onLogin() {
+  userLogin() {
     const loginData: LoginRequest = {username: this.username, password: this.password};
     this.authService.login(loginData).subscribe(
       {
@@ -35,12 +35,10 @@ export class LoginComponent {
           if (response && response.httpResponseCode === 200 && response.data) {
             const user: Users = response.data;
             console.log('response', response, 'user', user);
-            if (response.jwt) {
-              localStorage.setItem('rapd_jwt', JSON.stringify(response.jwt));
-            }
-            setTimeout(() => {
-              this.authService.decodeJwt();
-            }, 200);
+            this.authService.userData   = user;
+            this.authService.jwt        = response.jwt;
+            this.authService.isLoggedIn = true;
+            this.authService.decodeJwt();
             this.messageService.add(
               {
                 key     : 'login-toast',
@@ -50,7 +48,7 @@ export class LoginComponent {
                 life    : 3000
               }
             );
-            this.router.navigate(['/dashboard']).then(r => console.log('navigated to /dashboard', r));
+            this.router.navigate(['/app/home']).then(r => console.log('navigated to /dashboard', r));
           } else {
             console.error('no proper response from backend');
             this.messageService.add(
@@ -84,3 +82,4 @@ export class LoginComponent {
 
   }
 }
+
